@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Influencer Earnings Estimator</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #080808;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .app-header {
+            text-align: center;
+            padding: 35px;
+            background: linear-gradient(135deg, #000000, #25f4ee, #fe2c55);
+        }
+
+        .app-header h1 {
+            margin-bottom: 10px;
+        }
+
+        .nav {
+            background-color: #111111;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .nav a {
+            color: #25f4ee;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .app-box {
+            background-color: #181818;
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 6px solid #25f4ee;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+            color: #25f4ee;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .platform-options {
+            background-color: #0f0f0f;
+            padding: 18px;
+            border-radius: 12px;
+            border: 2px solid #333333;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .checkbox-row input {
+            width: 20px;
+            height: 20px;
+        }
+
+        .checkbox-row label {
+            margin: 0;
+            color: white;
+            font-weight: normal;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 15px;
+            background-color: #fe2c55;
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #25f4ee;
+            color: black;
+        }
+
+        .result-box {
+            margin-top: 25px;
+            background-color: #0f0f0f;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #fe2c55;
+        }
+
+        .result-box h2 {
+            color: #25f4ee;
+        }
+
+        .income-line {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #333333;
+            padding: 8px 0;
+        }
+
+        .total {
+            font-size: 24px;
+            color: #25f4ee;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .note {
+            color: #cccccc;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-header">
+        <h1>Influencer Earnings Estimator</h1>
+        <p>Estimate different ways a creator can make money online</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="scratch.html">Scratch Page</a>
+        <a href="projects.html">Projects</a>
+    </div>
+
+    <div class="app-box">
+        <h2>Choose Platforms to Include</h2>
+
+        <div class="platform-options">
+            <p>
+                Use these checkboxes to decide whether the calculator includes TikTok income,
+                YouTube income, or both.
+            </p>
+
+            <div class="checkbox-row">
+                <input type="checkbox" id="includeTikTok" checked>
+                <label for="includeTikTok">Include TikTok Creator Rewards</label>
+            </div>
+
+            <div class="checkbox-row">
+                <input type="checkbox" id="includeYouTube" checked>
+                <label for="includeYouTube">Include YouTube Ad Revenue</label>
+            </div>
+        </div>
+
+        <h2>Enter Creator Information</h2>
+
+        <label for="followers">Total Followers / Subscribers</label>
+        <input type="number" id="followers" placeholder="Example: 50000">
+
+        <label for="monthlyViews">Monthly Video Views</label>
+        <input type="number" id="monthlyViews" placeholder="Example: 1000000">
+
+        <label for="sponsorships">Number of Sponsored Posts Per Month</label>
+        <input type="number" id="sponsorships" placeholder="Example: 2">
+
+        <label for="sponsorRate">Average Sponsorship Payment Per Post</label>
+        <input type="number" id="sponsorRate" placeholder="Example: 500">
+
+        <label for="subscriptions">Number of Monthly Paid Subscribers</label>
+        <input type="number" id="subscriptions" placeholder="Example: 100">
+
+        <label for="subscriptionPrice">Monthly Subscription Price</label>
+        <input type="number" id="subscriptionPrice" placeholder="Example: 5">
+
+        <label for="brandSales">Monthly Personal Brand / Merch Sales</label>
+        <input type="number" id="brandSales" placeholder="Example: 1000">
+
+        <label for="streamingTips">Monthly Streaming Tips / Donations</label>
+        <input type="number" id="streamingTips" placeholder="Example: 250">
+
+        <button onclick="calculateIncome()">Calculate Estimated Income</button>
+
+        <div class="result-box" id="results" style="display: none;">
+            <h2>Estimated Monthly Income</h2>
+
+            <div class="income-line" id="tiktokLine">
+                <span>TikTok Creator Rewards Estimate</span>
+                <span id="tiktokResult">$0</span>
+            </div>
+
+            <div class="income-line" id="youtubeLine">
+                <span>YouTube Ad Revenue Estimate</span>
+                <span id="youtubeResult">$0</span>
+            </div>
+
+            <div class="income-line">
+                <span>Sponsorships</span>
+                <span id="sponsorResult">$0</span>
+            </div>
+
+            <div class="income-line">
+                <span>Monthly Subscriptions</span>
+                <span id="subscriptionResult">$0</span>
+            </div>
+
+            <div class="income-line">
+                <span>Personal Brand / Merch Sales</span>
+                <span id="brandResult">$0</span>
+            </div>
+
+            <div class="income-line">
+                <span>Streaming Tips / Donations</span>
+                <span id="streamingResult">$0</span>
+            </div>
+
+            <div class="total">
+                Total Estimate: <span id="totalResult">$0</span>
+            </div>
+
+            <p class="note">
+                This is only a rough estimate for a school project. Real influencer income depends on platform rules,
+                audience location, niche, engagement, contracts, RPM, and brand partnerships.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function formatMoney(amount) {
+            return "$" + amount.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+
+        function getNumber(id) {
+            return Number(document.getElementById(id).value) || 0;
+        }
+
+        function calculateIncome() {
+            let monthlyViews = getNumber("monthlyViews");
+            let sponsorships = getNumber("sponsorships");
+            let sponsorRate = getNumber("sponsorRate");
+            let subscriptions = getNumber("subscriptions");
+            let subscriptionPrice = getNumber("subscriptionPrice");
+            let brandSales = getNumber("brandSales");
+            let streamingTips = getNumber("streamingTips");
+
+            let includeTikTok = document.getElementById("includeTikTok").checked;
+            let includeYouTube = document.getElementById("includeYouTube").checked;
+
+            // Simple estimate assumptions
+            let tiktokRPM = 0.50;
+            let youtubeRPM = 3.00;
+
+            let tiktokIncome = includeTikTok ? (monthlyViews / 1000) * tiktokRPM : 0;
+            let youtubeIncome = includeYouTube ? (monthlyViews / 1000) * youtubeRPM : 0;
+
+            let sponsorshipIncome = sponsorships * sponsorRate;
+            let subscriptionIncome = subscriptions * subscriptionPrice;
+            let brandIncome = brandSales;
+            let streamingIncome = streamingTips;
+
+            let total =
+                tiktokIncome +
+                youtubeIncome +
+                sponsorshipIncome +
+                subscriptionIncome +
+                brandIncome +
+                streamingIncome;
+
+            document.getElementById("tiktokResult").textContent = formatMoney(tiktokIncome);
+            document.getElementById("youtubeResult").textContent = formatMoney(youtubeIncome);
+            document.getElementById("sponsorResult").textContent = formatMoney(sponsorshipIncome);
+            document.getElementById("subscriptionResult").textContent = formatMoney(subscriptionIncome);
+            document.getElementById("brandResult").textContent = formatMoney(brandIncome);
+            document.getElementById("streamingResult").textContent = formatMoney(streamingIncome);
+            document.getElementById("totalResult").textContent = formatMoney(total);
+
+            // Hide the platform rows if they are not selected
+            document.getElementById("tiktokLine").style.display = includeTikTok ? "flex" : "none";
+            document.getElementById("youtubeLine").style.display = includeYouTube ? "flex" : "none";
+
+            document.getElementById("results").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

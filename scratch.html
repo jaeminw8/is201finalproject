@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Social Media Analytics Scratch Page</title>
+    <link rel="stylesheet" href="css/scratch.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Social Media Analytics</h1>
+        <p>Understanding how TikTok, Instagram, and YouTube measure growth</p>
+    </div>
+
+    <div class="nav-box">
+        <a href="index.html">Professional Home</a>
+        <a href="resume.html">Resume</a>
+        <a href="projects.html">Projects</a>
+        <a href="webapp.html">Influencer Income App</a>
+        <a href="#tableau">Jump to Tableau Graph</a>
+    </div>
+
+    <div class="content-box">
+        <h2>Why Social Media Analytics Matters</h2>
+
+        <p>
+            Social media analytics helps creators and businesses understand whether their content is actually working.
+            Instead of only guessing, analytics can show what posts are getting views, what content gets engagement,
+            and what platforms are helping a creator or brand grow.
+        </p>
+
+        <p>
+            TikTok, Instagram, and YouTube all give creators data, but each platform uses that data differently.
+            A strong creator or business has to understand views, watch time, engagement, followers, and revenue.
+        </p>
+    </div>
+
+    <div class="content-box">
+        <h2>Important Social Media Metrics</h2>
+
+        <ol>
+            <li>Audience Growth
+                <ul>
+                    <li>Follower count</li>
+                    <li>Subscriber count</li>
+                    <li>Returning viewers</li>
+                </ul>
+            </li>
+
+            <li>Content Performance
+                <ul>
+                    <li>Views</li>
+                    <li>Watch time</li>
+                    <li>Likes, comments, and shares</li>
+                </ul>
+            </li>
+
+            <li>Business Results
+                <ul>
+                    <li>Sales from links</li>
+                    <li>Brand deals</li>
+                    <li>Ad revenue and sponsorships</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="image-section">
+        <h2>Analytics Turns Content Into Strategy</h2>
+        <img src="assets/scratch-analytics.jpg" alt="Social media analytics dashboard">
+        <p>
+            A dashboard helps people see patterns quickly. Instead of looking at one post at a time,
+            analytics helps creators understand the bigger picture.
+        </p>
+    </div>
+
+    <div class="video-section">
+    <h2>Video: How TikTok Works</h2>
+
+    <iframe 
+        width="560" 
+        height="315"
+        src="https://www.youtube.com/embed/diJ172jDsxA"
+        title="The TikTok Algorithm Explained"
+        frameborder="0"
+        allowfullscreen>
+    </iframe>
+
+    <p>
+        This video explains how TikTok's algorithm works and how creators can use content strategy,
+        watch time, and engagement to improve growth.
+    </p>
+    </div>
+
+    <div id="tableau" class="tableau-section">
+    <h2>Interactive Tableau Graph</h2>
+    <p>
+        This embedded Tableau dashboard shows social media trend analysis, including how follower counts
+        change over time. This connects directly to how social media trends can help platforms, creators,
+        and brands grow their audience.
+    </p>
+
+    <div class='tableauPlaceholder' id='vizSocialMediaTrendAnalysis' style='position: relative'>
+        <noscript>
+            <a href='https://public.tableau.com/app/profile/itlizeglobal/viz/SocialMediaTrendAnalysis_15964651104780/SocialMediaEffectonCompanies'>
+                View the Social Media Trend Analysis dashboard on Tableau Public
+            </a>
+        </noscript>
+
+        <object class='tableauViz' style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+            <param name='embed_code_version' value='3' />
+            <param name='site_root' value='' />
+            <param name='name' value='SocialMediaTrendAnalysis_15964651104780/SocialMediaEffectonCompanies' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='showVizHome' value='no' />
+        </object>
+    </div>
+
+    <script type='text/javascript'>
+        var divElement = document.getElementById('vizSocialMediaTrendAnalysis');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+
+        vizElement.style.width = '100%';
+        vizElement.style.height = '800px';
+
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+</div>
